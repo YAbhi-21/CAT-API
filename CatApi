@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT API</title>
+
+    <link rel = "stylesheet" href = "style.css" />
+    <style>
+      body {
+   background-color :beige;
+}
+.results {
+    background-color : whitesmoke;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 400px;
+    width: 300px;
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#cat_btn {
+    background-color: darksalmon;
+    border: 0;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 10px;
+    margin : 10px;
+    width :300px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.searchbar {
+   display : flex;
+   justify-content: center;
+   margin : 10px;
+   padding-top: 10px;
+}
+    </style>
+</head>
+<body>
+     <div class = "searchbar">
+       <input type = "text" placeholder= "search here" >
+     </div>
+    <div class = "results">
+        <div id = "cat_result" >Cat Pics</div>
+       </div>
+   
+     <div class = "buttons"> 
+     <button id = "cat_btn">Generate</button>
+    </div>
+
+   <script>
+     
+     let cat_result = document.getElementById('cat_result');
+let cat_btn = document.getElementById('cat_btn');
+
+cat_btn.addEventListener('click' , getcat)
+
+function getcat () {
+    fetch('https://cataas.com/api/cats?tags=cute')
+
+   .then (res => res.json())
+   .then ((data) => {
+    
+       for( let i= 0 ; i<data.length ; i++){
+          console.log(data[i].id);
+
+       }
+   })
+}
+
+
+   </script>
+
+      <script src = "script.js"></script>
+</body>
+</html>
